@@ -1,0 +1,20 @@
+# VS Code
+.vscode/
+
+# Build files
+
+build/
+install/
+log/
+
+# Compile files
+
+*.o
+*.so
+*.a
+*.exe
+
+# Python
+
+__pycache__/
+*.pyc
