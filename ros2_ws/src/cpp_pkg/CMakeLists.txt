@@ -7,6 +7,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -23,4 +24,20 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(ex_cpp_node 
+  src/first_node.cpp
+  src/main.cpp
+)
+target_include_directories(ex_cpp_node PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+ament_target_dependencies(ex_cpp_node 
+  rclcpp
+)
+
+install(TARGETS
+  ex_cpp_node
+  DESTINATION lib/${PROJECT_NAME}
+)
 ament_package()
